@@ -1,0 +1,19 @@
+[modul]
+libs = pedotransfer;balance;ceres;daisy;evapotranspiration_pm;expertn_database;hydraulic_functions;leachn;schaaf;xpn_output;daisy_miner;schaaf_manag;treemix;gecros;hydrus;
+
+[model]
+grid = 1,1,1,1,$PROJECT_PATH/test3_1_1_1_0.xpi,100.0;;;
+
+[options]
+varlist = $<$PROJECT_PATH/$PROJECT_NAME_varlist.var$>
+time step = 0.005
+output time step = hourly
+special_outout_def = $<$PROJECT_PATH/$PROJECT_NAME_special_output_def.ini$>
+simulation start = 1987-05-01
+simulation end = 1987-09-01
+
+[system]
+module_def_file = cfg_system/modules.def
+num_proc = 0
+debug_level = 3
+

@@ -1,0 +1,42 @@
+[modul]
+libs = agroforestry;balance;century_n;ceres;daisy;daisy_miner;depos;evapotranspiration_pm;expertn_database;hpm;hydraulic_functions;hydrus;interception;leachn;pedotransfer;schaaf;schaaf_manag;spass;treemix;xnoah;xpn_output;gecros;
+
+[model]
+grid = 1,1,0,0,$PROJECT_PATH/Dornburg_GECROS_LEACHN_1_0_0_0.xpi,100.0;1,1,1,1,$PROJECT_PATH/Dornburg_GECROS_LEACHN_1_1_1_0.xpi,100.0;1,1,2,1,$PROJECT_PATH/Dornburg_GECROS_LEACHN_1_2_1_0.xpi,100.0;1,1,3,1,$PROJECT_PATH/Dornburg_GECROS_LEACHN_1_3_1_0.xpi,100.0;1,1,4,1,$PROJECT_PATH/Dornburg_GECROS_LEACHN_1_4_1_0.xpi,100.0;;;
+
+[options]
+varlist = $<$PROJECT_PATH/$PROJECT_NAME_varlist.var$>
+time step = 0.01
+output time step = daily
+special_output_def = $<$PROJECT_PATH/$PROJECT_NAME_special_output_def.ini$>
+simulation start = 2015-11-01
+simulation end = 2020-11-30
+measure time = 0
+create_auto_init_files = 0
+t_base = 3.5
+gdd_start_crit = 600.0
+gdd_end_crit = 100.0
+start_day_phenology = 01.03
+start_dlen_phenology = 10.0
+wrfchem_coupling = 1
+coupling = 1
+output time span = 2014-11-02:2020-11-30
+output netcdf path = $PROJECT_PATH/output
+no output netcdf file = 1
+output text path = $PROJECT_PATH/output
+no output txt file = 0
+always dump nc file = 1
+create xno files = 1
+Winterrape = $<$PROJECT_PATH/$PROJECT_NAME__winterrape.ini$>
+Wheat_Winterweizen_gecros = $<$PROJECT_PATH/$PROJECT_NAME__wheat_winterweizen_gecros.ini$>
+Rapeseed_Winterrape_gecros = $<$PROJECT_PATH/$PROJECT_NAME__rapeseed_winterrape_gecros.ini$>
+Barley_Sommergerste_gecros = $<$PROJECT_PATH/$PROJECT_NAME__barley_sommergerste_gecros.ini$>
+Barley = $<$PROJECT_PATH/$PROJECT_NAME__barley.ini$>
+Wheat = $<$PROJECT_PATH/$PROJECT_NAME__wheat.ini$>
+Rapeseed_Winterrape = $<$PROJECT_PATH/$PROJECT_NAME__winterrape.ini$>
+
+[system]
+module_def_file = cfg_system/modules.def
+num_proc = 0
+debug_level = 1
+

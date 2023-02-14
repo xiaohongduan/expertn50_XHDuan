@@ -1,0 +1,150 @@
+[control]
+balance = BALANCE
+database = Expert N Standard Read INI
+pedotransfer = Campbell
+output = XPN_OUTPUT
+
+[water]
+potential evapotranspiration = Penman Monteith
+potential evaporation = Penman Monteith
+actual evaporation = Penman Monteith
+kc factor = const
+hydraulic functions = van Genuchten and Mualem
+flow module = HYDRUS Flow
+
+[Expert N Standard Read INI]
+use high resolution climate data = 0
+interpolate climate data = 1
+filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_cfg.ini$>
+time zone = 0
+climate file = $<$PROJECT_PATH/Wetterdaten_Braunschweig_1997-2021_cleaned.csv$>
+
+[heat]
+heat transfer = DAISY Modul Heat Transfer
+albedo = Albedo const
+surface temperature = First Soil Layer
+latent heat = Penman Monteith
+sensible heat = Penman Monteith
+ground heat = Penman Monteith
+net radiation = Penman Monteith
+emissivity = Penman Monteith
+
+[nitrogen]
+deposition = Constant Deposition
+nitrogen transport = LEACHN
+nitrification = LEACHN
+denitrification = LEACHN
+mineralisation = LEACHN
+urea hydrolysis = LEACHN
+
+[plant]
+potential transpiration = Penman Monteith
+phenological development = GECROS Development
+biomass growth = GECROS BiomassGrowth
+canopy gross photosynthesis = GECROS Gross Photosynthesis
+canopy formation = GECROS Canopy Formation
+root length growth = GECROS Root System Formation
+crop senescence = GECROS Crop Senescence
+nitrogen demand = GECROS Nitrogen Demand
+nitrogen uptake = GECROS Nitrogen Uptake
+actual transpiration = GECROS Actual Transpiration
+
+[management]
+application fertilizers = Schaaf
+soil loosing compaction = Williams et al. (EPIC)
+mixing incorporation = Williams et al. (EPIC)
+
+[Penman Monteith]
+soil cover = 0.0
+
+[evapotranspiration_pm]
+
+[Wang (SPASS)]
+harvest_at_maturity = 0
+set_LAI_to_0_after_maturity = 0
+
+[spass]
+filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_crop_rotation.ini$>
+
+[expertn_database]
+no rain = 0
+
+[Williams et al. (EPIC)]
+
+[schaaf_manag]
+ini_filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_schaaf_manag.ini$>
+
+[HYDRUS Flow]
+
+[hydrus]
+bottombc = 1
+mobil = 0
+infiltration_limit = 1
+infiltration_layer_limit = 1
+
+[LEACHN]
+
+[leachn]
+ini_filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_leachn.ini$>
+lai = 1.0
+nroot = 10
+distribution = 0
+bottombc = 1
+mobil = 0
+
+[DAISY Modul Heat Transfer]
+frost_rad_flag = 1
+lower_boundary_condition = 2
+
+[daisy]
+
+[Schaaf]
+
+[schaaf]
+filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_fertilization.ini$>
+
+[Constant Deposition]
+no3 = 6.0
+nh4 = 7.0
+
+[depos]
+
+[doc]
+description = 
+
+[const]
+kc factor = 1.0
+
+[Strip next to trees]
+
+[agroforestry]
+
+[Hansen et al. (DAISY_Miner)]
+
+[daisy_miner]
+ini_filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_daisy_miner_nitrogen.ini$>
+
+[CENTURY_N Mineralisation]
+
+[century_n]
+ini_filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_century_n.ini$>
+iforest = 1
+fdrain = 1.0
+
+[GECROS Root System Formation]
+
+[gecros]
+filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_crop_rotation.ini$>
+
+[Albedo const]
+albedo = 0.25
+
+[GECROS BiomassGrowth]
+
+[First Soil Layer]
+
+[CERES]
+
+[ceres]
+filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_crop_rotation.ini$>
+

@@ -1,0 +1,102 @@
+[control]
+pedotransfer = Campbell
+balance = BALANCE
+database = Expert N Standard Read INI
+output = XPN_OUTPUT
+
+[water]
+hydraulic functions = van Genuchten and Mualem
+flow module = HYDRUS Flow
+
+[Expert N Standard Read INI]
+use high resolution climate data = 0
+interpolate climate data = 1
+filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_cfg.ini$>
+high res climate file = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_climate_hr.csv$>
+time zone = 0
+climate file = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_climate.csv$>
+
+[expertn_database]
+no rain = 0
+
+[plant]
+potential transpiration = CERES
+actual transpiration = CERES
+phenological development = CERES
+canopy gross photosynthesis = CERES
+biomass growth = CERES
+canopy formation = CERES
+root length growth = CERES
+nitrogen demand = CERES
+nitrogen uptake = CERES
+crop senescence = CERES
+
+[nitrogen]
+nitrogen transport = LEACHN
+nitrification = LEACHN
+denitrification = LEACHN
+mineralisation = LEACHN
+urea hydrolysis = LEACHN
+
+[heat]
+heat transfer = DAISY Modul Heat Transfer
+albedo = Albedo const
+latent heat = Horton & Chung 86
+sensible heat = Horton & Chung 86
+surface temperature = First Soil Layer
+ground heat = Penman Monteith
+net radiation = Penman Monteith
+emissivity = Penman Monteith
+
+[management]
+application fertilizers = Schaaf
+soil loosing compaction = Williams et al. (EPIC)
+mixing incorporation = Williams et al. (EPIC)
+
+[HYDRUS Flow]
+
+[hydrus]
+bottombc = 1
+mobil = 0
+infiltration_limit = 1
+infiltration_layer_limit = 1
+ground_water_level = 2000.0
+
+[CERES]
+
+[ceres]
+filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_crop_rotation.ini$>
+flexible_day_length = 0
+INRA_water_uptake = 1
+Wheat = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_wheat.ini$>
+Barley = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_barley.ini$>
+
+[Williams et al. (EPIC)]
+
+[schaaf_manag]
+ini_filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_schaaf_manag.ini$>
+
+[Schaaf]
+
+[schaaf]
+filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_fertilization.ini$>
+
+[LEACHN]
+
+[leachn]
+ini_filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_leachn.ini$>
+lai = 1.0
+nroot = 10
+distribution = 0
+RootsTo0AtEndOfSeason = 1
+plant_measurement_filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_leachn_plant_measurement.xno$>
+plant_waterUptakePara_filename = $<$PROJECT_PATH/$PROJECT_NAME_$REG_STR_leachn_plant_waterUptakePara.ini$>
+bottombc = 1
+mobil = 0
+
+[DAISY Modul Heat Transfer]
+frost_rad_flag = 1
+lower_boundary_condition = 2
+
+[daisy]
+

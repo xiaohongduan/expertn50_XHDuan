@@ -1,0 +1,49 @@
+//      daisyhong.c
+//      
+//      Copyright 2010 Christian Klein <chrikle@berlios.de>
+//      
+
+
+//#include "daisyhong.h"
+#include "daisyhong_load.h"
+#include <glib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+G_DEFINE_TYPE(daisyhong, daisyhong, EXPERTN_MODUL_BASE_TYPE);
+
+
+static void daisyhong_class_init(daisyhongClass *klass){}
+
+
+static void daisyhong_init(daisyhong *self)
+{
+}
+
+
+int daisyhong_load(daisyhong *self)
+{
+	expertn_modul_base *xpn = EXPERTN_MODUL_BASE(self); 
+	 // expertn_modul_base *xpn = &(self->parent);
+	
+	daisyhong_load_ini(self);
+	
+	
+	// Hydraulische Funktionen laden:
+	self->WCont = xpn_register_var_get_pointer(xpn->pXSys->var_list,"hydraulic_fuctions.WCont");
+	self->HCond = xpn_register_var_get_pointer(xpn->pXSys->var_list,"hydraulic_fuctions.HCond");
+	self->DWCap = xpn_register_var_get_pointer(xpn->pXSys->var_list,"hydraulic_fuctions.DWCap");
+	self->MPotl = xpn_register_var_get_pointer(xpn->pXSys->var_list,"hydraulic_fuctions.MPotl");
+	if ((self->WCont==NULL) || (self->HCond==NULL) || (self->DWCap==NULL) || (self->MPotl==NULL))
+		{
+			PRINT_ERROR("Problem with hydraulic functions!");
+		}
+		
+
+		
+		
+	PRINT_MESSAGE(xpn,3,"daisyhong miner geladen!")
+	return RET_SUCCESS;
+}

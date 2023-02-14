@@ -1,0 +1,120 @@
+//      daisyhong.h
+//      
+//      Copyright 2010 Christian Klein <chrikle@berlios>
+//      
+
+
+
+#ifndef __DAISYHONG_H__
+#define __DAISYHONG_H__
+
+#include <expertn_modul_base.h>
+
+G_BEGIN_DECLS
+
+#define DAISYHONG_TYPE				(daisyhong_get_type())
+#define DAISYHONG(obj)				(G_TYPE_CHECK_INSTANCE_CAST((obj),\
+			DAISYHONG_TYPE, daisyhong))
+#define DAISYHONG_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST((klass),\
+			DAISYHONG_TYPE, daisyhongClass))
+#define IS_DAISYHONG(obj)			(G_TYPE_CHECK_INSTANCE_TYPE((obj),\
+			DAISYHONG_TYPE))
+#define IS_DAISYHONG_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE((klass),\
+			DAISYHONG_TYPE))
+
+typedef struct _daisyhong			daisyhong;
+typedef struct _daisyhongClass		daisyhongClass;
+
+struct _daisyhong
+{
+	expertn_modul_base parent;
+	/* add your public declarations here */
+	// Hydraulic Functions:
+	double (*WCont)(double Hakt, double Takt, double Ksat, double Tsat, double Tmin,
+                    double Alpha, double N, double M, double Ca, double Cb,
+                    double Hc, double Tc, double Hmin, double Hvor, double Tvor,
+                    double Alpha2, double N2, double M2, double W1, double W2);
+	double (*HCond)(double Hakt, double Takt, double Ksat, double Tsat, double Tmin,
+                    double Alpha, double N, double M, double Ca, double Cb,
+                    double Hc, double Tc, double Hmin, double Hvor, double Tvor,
+                    double Alpha2, double N2, double M2, double W1, double W2);
+	double (*DWCap)(double Hakt, double Takt, double Ksat, double Tsat, double Tmin,
+                    double Alpha, double N, double M, double Ca, double Cb,
+                    double Hc, double Tc, double Hmin, double Hvor, double Tvor,
+                    double Alpha2, double N2, double M2, double W1, double W2);
+    double (*MPotl)(double Hakt, double Takt, double Ksat, double Tsat, double Tmin,
+                    double Alpha, double N, double M, double Ca, double Cb,
+                    double Hc, double Tc, double Hmin, double Hvor, double Tvor,
+                    double Alpha2, double N2, double M2, double W1, double W2);
+				
+	double SimTime; // ?
+	char *ini_filename; // ?
+};
+
+
+#define Message(a,b) PRINT_MESSAGE(xpn,4,b);
+
+
+// **********************************************************************************
+//    LongPointer und Variablen-Abkürzungen
+// **********************************************************************************
+
+#define  N_SOIL_LAYERS  	N_FIRSTLAYER N_STOPLAYER N_NEXTLAYER 		
+		
+#define  N_ZERO_LAYER  \
+            pSL = xpn->pSo->pSLayer,\
+            pCL = xpn->pCh->pCLayer,\
+            pCP = xpn->pCh->pCProfile,\
+            pPA = xpn->pCh->pCParam,\
+            pSW = xpn->pSo->pSWater,\
+            pWL = xpn->pWa->pWLayer,\
+            pHL = xpn->pHe->pHLayer,\
+            pNF = xpn->pMa->pNFertilizer;		
+
+#define  N_FIRSTLAYER  iLayer=1,\
+              pSL = xpn->pSo->pSLayer->pNext,\
+              pCL = xpn->pCh->pCLayer->pNext,\
+              pSW = xpn->pSo->pSWater->pNext,\
+              pWL = xpn->pWa->pWLayer->pNext,\
+              pPA = xpn->pCh->pCParam->pNext,\
+              pHL = xpn->pHe->pHLayer->pNext;
+              
+#define  N_STOPLAYER \
+             ((iLayer<xpn->pSo->iLayers-1)&&\
+              (pSL->pNext!=NULL)&&\
+              (pCL->pNext!=NULL)&&\
+              (pSW->pNext!=NULL)&&\
+              (pWL->pNext!=NULL)&&\
+              (pPA->pNext!=NULL)&&\
+              (pHL->pNext!=NULL));
+              
+#define  N_NEXTLAYER \
+              iLayer++,\
+              pSL = pSL->pNext,\
+		      pCL = pCL->pNext,\
+		      pSW = pSW->pNext,\
+		      pWL = pWL->pNext,\
+		      pPA = pPA->pNext,\
+		      pHL = pHL->pNext
+
+
+
+#define SimStart(pz) (pz->pSimTime->bFirstRound==TRUE)
+
+
+// public class member function:
+G_MODULE_EXPORT int daisyhong_load(daisyhong *self);
+G_MODULE_EXPORT int daisyhong_miner(daisyhong *self);
+G_MODULE_EXPORT int daisyhong_done(daisyhong *self);
+
+struct _daisyhongClass
+{
+	expertn_modul_baseClass parent_class;
+};
+
+G_MODULE_EXPORT GType daisyhong_get_type (void);
+
+G_END_DECLS
+
+#endif /* __DAISYHONG_H__ */
+

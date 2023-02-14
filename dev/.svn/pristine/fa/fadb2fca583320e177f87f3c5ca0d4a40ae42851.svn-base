@@ -1,0 +1,127 @@
+/*
+ * xylemwaterflow_structs.h
+ * 
+ * Copyright 2016 Florian Heinlein <florian.heinlein@inbox.lt>
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ * 
+ * 
+ */
+
+#ifndef __XYLEMWATERFLOW_STRUCTS_H__
+#define __XYLEMWATERFLOW_STRUCTS_H__
+
+#include <vector>
+
+class nodes
+{
+public:							 
+	int		parent;			//number of the parent node
+	//std::vector<int> *child;
+	std::vector<int> child;
+	double	X;				//mm
+	double	Y;				//mm
+	double	Z;				//mm
+	double	LA;				//fraction of total LA of the tree [0..1] dimensionless density 
+	double	cosine;			//cosine to parent
+	int		vz_delZ;		//-1 left of parent
+							//+1 right of parent
+	bool	canopy;			//1 for canopy node
+	double  BoundaryFlux;	//root 
+	double  dBoundaryFluxdh;//Änderung mit h
+	double	Transpiration;  //canopy [mm^3/s]
+	double  H_new_total;
+	double	H_total_old;
+	double	H_total;
+	double	Vectorb;		//hydrus needs this
+	double	deltaZVec;				//hydrus needs this
+	double	capVec;					//hydrus needs this
+	double	oberesWurzelelement;	 
+	double	unteresWurzelelement;
+	double	*frac; //size of array: number of soil layers. Contains the fraction of the root in the layer 
+	double	WC_Xylem_old; //hydrus needs this
+	double	WC_Xylem;
+	double	Capacity_Xylem;//hydrus needs this
+	double	K;//[mm^3/s]
+	double  Kirchhoff; //Kirchhoff potential 
+	double  l; //length: distance to parent node [mm]
+	double  g; 
+	double  XylemArea; //Area of the water conducting xylem sapwood [mm^2]
+						//does not contain hardwood and phloem
+	double  TotalDiameter; //[mm] contains the diameter of the total segment 
+	int		sub; // for root generator
+	int		Strahler; //Strahler number of the node
+    int     gloi;
+    int     gloii;
+	double  collectAdjacentLength(double *sum, class tree *T);
+};
+
+class tree
+{
+public:
+	class	nodes *node;
+	int		iCnodes; //number of canopy nodes
+	int		iRnodes; //number of root nodes
+	int		inodeDBH;//number of node at dbh
+	int		maxchilds; //number of childs of the node with the most childs
+	double	max_XylemArea_stem; //Xylem area of the stem in mm^2
+	double	max_XylemArea_root; //Xylem area of the stem in mm^2
+	double  CrownProjArea; //m^2 to up-scale to soil uptake
+	double  HydraulicArea; //m^2 to down-scale Penman-Monteith
+	double	stom_delay; //s
+	char	canopy[500];//filename of canopy
+	char	root[500];//filename of root system
+	double	stom_a, stom_b; //stomatal reaction function to leaf water potential
+	double	elasticity;// radial cell wall elasticity E,mm
+	double	Theta_aev;//vol water content at air entry value [0..1]
+	double	BC_a;//Brooks&Corey A ,mm, air entry value for branch
+	double	BC_Lambda;
+	double	kmax_branch, kmax_root; //max conductivity mm/s/m^2xylem
+	double	RadialRootKmax;//Root radial conductivity kr[1/s]
+	double	xylemfraction_stem; //ratio of xylem area to total stem area at stem
+	double	xylemfraction_root; //ratio of xylem area to total area of roots
+	double	porosity; //0..1
+	double	maxWaterContentCanopy; //liter maximal water content if all pores are filled 100%
+	void	getStrahler();//calculates the Strahler Index of every branch
+	int		iLeafNodes;	//number of nodes that carry leaves
+	double	getWaterContent(double height);//returns the water content above 'height' in liter
+	double	getFineRootArea_mm(double maxd);//sum the root area of all roots with diamter < maxd[mm]; returns m^2
+	double	getFineRootArea_sub(int minsum); //minsum: min order of generator
+	double	fRA; //fine root area [m^2];
+	int		checkTree(); //checks the variables, returns 0 if everything is OK
+	int		LAIDistribution;//0: homogen; 1: load histogram
+	char	*LAIHisto;//histogram file of LAI distribution
+	char	*in_transpiration;////path to the transpiration distribution files
+	int		nentry; //number of nonzero matrix elements for compressed row format
+	int *SLU_asub;
+	double *SLU_a;
+	int *SLU_xa;
+	double *SLU_rhs;
+
+	double *MatrixA; //one row of the matrix
+	double *rhs	;	
+};
+
+class edge{
+public:
+	int a,b;
+	void set(int aa, int bb){
+		a=aa;b=bb;
+	};
+};
+
+
+#endif //__XYLEMWATERFLOW_STRUCTS_H__

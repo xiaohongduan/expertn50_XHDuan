@@ -1,0 +1,167 @@
+
+#include "daisyhong_load.h"
+#include "stickstoff_macros.h"
+
+
+
+int daisyhong_load_ini(daisyhong *self)
+{
+	expertn_modul_base *xpn = &(self->parent);
+	char *ini_filename;
+	
+	if (self->ini_filename==NULL)
+		{
+			// Read from INI File:
+			ini_filename = xpn_register_var_get_pointer(self->parent.pXSys->var_list,"Config.daisyhong.ini_filename");
+
+
+			if (ini_filename==NULL)
+				{
+					PRINT_ERROR("Missing entry 'daisyhong.ini_filename' in your configuration!");
+				}
+			else
+				{
+
+					char *S2;
+					S2 = expertn_modul_base_replace_std_templates(xpn,ini_filename);
+					if (S2!=NULL)
+						{
+							ini_filename = get_fullpath_from_relative(self->parent.pXSys->base_path, S2);
+							self->ini_filename = g_strdup_printf("%s",ini_filename);
+							daisyhong_load_config(self);
+							free(ini_filename);
+							free(S2);
+						}
+
+				}
+
+		}
+
+	return RET_SUCCESS;
+}
+
+
+int daisyhong_load_config(daisyhong *self)
+{
+	GError *error = NULL;
+	expertn_modul_base *xpn = &(self->parent);
+	GKeyFile *keyfile;
+	GKeyFileFlags flags;
+	char *filename;
+	int layers_len;
+	int *layers;
+	double *var;
+	int var_len;
+	
+	var = NULL;
+	var_len=0;
+	layers_len=0;
+	layers=NULL;
+
+
+	filename=g_strdup_printf("%s",self->ini_filename);
+
+	/* Create a new GKeyFile object and a bitwise list of flags. */
+	keyfile = g_key_file_new ();
+
+	flags = G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS;
+
+	/* Load the GKeyFile from keyfile.conf or return. */
+	if (!g_key_file_load_from_file (keyfile, filename, flags, &error))
+		{
+			PRINT_ERROR(error->message);
+			return -1;
+		}
+
+//Hong
+//START SOIL VALUES C-, N-POOLS
+     //20003, 20008, 20009
+     //[start values general]
+//20003
+GET_INI_INT_ARRAY(layers,layers_len,"start values general","layers");
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCLitter,"c_litter","start values general",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNLitter,"n_litter","start values general",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCManure,"c_manure","start values general",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNManure,"n_manure","start values general",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCHumus,"c_humus","start values general",PSLAYER,xpn->pSo->pSLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNHumus,"n_humus","start values general",PSLAYER,xpn->pSo->pSLayer);
+
+G_FREE_IF_NOT_0(layers);
+	layers_len=0;
+
+//[start values daisy]
+GET_INI_INT_ARRAY(layers,layers_len,"start values daisy","layers");
+//20008
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCFOMSlow,"AOM1_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCFOMFast,"AOM2_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCFOMVeryFast,"AOM3_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCMicBiomSlow,"BOM1_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCMicBiomFast,"BOM2_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCMicBiomDenit,"BOMD_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCHumusStable,"SOM0_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCHumusSlow,"SOM1_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCHumusFast,"SOM2_C","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fCsolC,"Csol","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+
+//20009
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNFOMSlow,"AOM1_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNFOMFast,"AOM2_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNFOMVeryFast,"AOM3_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNMicBiomSlow,"BOM1_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNMicBiomFast,"BOM2_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNMicBiomDenit,"BOMD_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNHumusStable,"SOM0_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNHumusSlow,"SOM1_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNHumusFast,"SOM2_N","start values daisy",PCLAYER,xpn->pCh->pCLayer);
+
+
+G_FREE_IF_NOT_0(layers);
+	layers_len=0;
+
+//Hong
+     //TRANSFORMATION RATES DAISY MODEL PARAMETERS
+     //20007
+     //[transformation daisy]
+GET_INI_INT_ARRAY(layers,layers_len,"transformation daisy","layers");
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fFOMSlowDecMaxR,"fom_slow","transformation daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fFOMFastDecMaxR,"fom_fast","transformation daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fFOMVeryFastDecMaxR,"fom_veryfast","transformation daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMicBiomSlowDecMaxR,"micbioms_slow","transformation daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMicBiomFastDecMaxR,"micbioms_fast","transformation daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fHumusSlowMaxDecMaxR,"humus_slow","transformation daisy",PCLAYER,xpn->pCh->pCLayer);
+GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fHumusFastMaxDecMaxR,"humus_fast","transformation daisy",PCLAYER,xpn->pCh->pCLayer);
+
+G_FREE_IF_NOT_0(layers);
+	layers_len=0;
+
+	
+	//MINERALIZATION MODEL PARAMETERS
+	//20001
+	//[mineralisation]
+	GET_INI_INT_ARRAY(layers,layers_len,"mineralisation","layers");
+	
+	GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMinerEffFac,"effic","mineralisation",PCPARAM,xpn->pCh->pCParam);
+	GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMinerHumFac,"humf","mineralisation",PCPARAM,xpn->pCh->pCParam);
+	GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMicBiomCN,"min_cn","mineralisation",PCLAYER,xpn->pCh->pCLayer);
+	GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMinerTempB,"temp0","mineralisation",PCPARAM,xpn->pCh->pCParam);
+	GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMinerQ10,"miner_q10","mineralisation",PCPARAM,xpn->pCh->pCParam);
+	GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMinerThetaMin,"theta0","mineralisation",PCPARAM,xpn->pCh->pCParam);
+	GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fMinerSatActiv,"MinerSatActiv","mineralisation",PCPARAM,xpn->pCh->pCParam);
+	GET_INI_DOUBLE_ARRAY_AND_SET_TO_STRUC(fNitrifNO3NH4Ratio,"NitrifNO3NH4Ratio","mineralisation",PCPARAM,xpn->pCh->pCParam);
+	
+	
+	G_FREE_IF_NOT_0(layers);
+	layers_len=0;
+	
+
+	g_key_file_free(keyfile);
+	g_free(filename);
+
+	return RET_SUCCESS;
+}
+
+int daisyhong_done(daisyhong *self)
+{
+	G_FREE_IF_NOT_0(self->ini_filename);
+	return RET_SUCCESS;
+}

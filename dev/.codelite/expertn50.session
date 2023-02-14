@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Session Name="D:\expertn50\dev\expertn50.workspace">
+  <int Value="5" Name="m_selectedTab"/>
+  <wxString Value="D:\expertn50\dev\expertn50.workspace" Name="m_workspaceName"/>
+  <TabInfoArray Name="TabInfoArray">
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\modul\libagroforestry\src\agroforestry.c" Name="FileName"/>
+      <int Value="968" Name="FirstVisibleLine"/>
+      <int Value="977" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\modul\libmpmas_coupling\src\mpmas_coupling.c" Name="FileName"/>
+      <int Value="339" Name="FirstVisibleLine"/>
+      <int Value="355" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\libexpertn_modul_base\include\xtime.h" Name="FileName"/>
+      <int Value="60" Name="FirstVisibleLine"/>
+      <int Value="71" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\modul\libgecros\src\gecros.c" Name="FileName"/>
+      <int Value="26" Name="FirstVisibleLine"/>
+      <int Value="6" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\modul\libtreemix\src\Initialization.c" Name="FileName"/>
+      <int Value="1224" Name="FirstVisibleLine"/>
+      <int Value="1236" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\expertn_bin\src\main.c" Name="FileName"/>
+      <int Value="69" Name="FirstVisibleLine"/>
+      <int Value="79" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\modul\libtreemix\src\BiomassGrowth.c" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="5" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\modul\libtreemix\src\Transpiration.c" Name="FileName"/>
+      <int Value="511" Name="FirstVisibleLine"/>
+      <int Value="518" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\libexpertn_modul_base\include\xplant.h" Name="FileName"/>
+      <int Value="635" Name="FirstVisibleLine"/>
+      <int Value="644" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="D:\expertn50\dev\xpn\libexpertn_modul_base\include\xchemist.h" Name="FileName"/>
+      <int Value="342" Name="FirstVisibleLine"/>
+      <int Value="352" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+  </TabInfoArray>
+  <SerializedObject Name="m_breakpoints">
+    <long Value="2" Name="Count"/>
+    <SerializedObject Name="Breakpoint0">
+      <wxString Value="D:\expertn50\dev\xpn\modul\libagroforestry\src\agroforestry.c" Name="file"/>
+      <int Value="1690" Name="lineno"/>
+      <wxString Value="" Name="function_name"/>
+      <wxString Value="" Name="memory_address"/>
+      <int Value="1" Name="bp_type"/>
+      <int Value="0" Name="watchpoint_type"/>
+      <wxString Value="" Name="watchpt_data"/>
+      <CData Name="commandlist"/>
+      <bool Value="0" Name="regex"/>
+      <bool Value="0" Name="is_temp"/>
+      <bool Value="1" Name="is_enabled"/>
+      <long Value="0" Name="ignore_number"/>
+      <wxString Value="" Name="conditions"/>
+      <int Value="0" Name="origin"/>
+    </SerializedObject>
+    <SerializedObject Name="Breakpoint1">
+      <wxString Value="D:\expertn50\dev\xpn\modul\libagroforestry\src\agroforestry.c" Name="file"/>
+      <int Value="1691" Name="lineno"/>
+      <wxString Value="" Name="function_name"/>
+      <wxString Value="" Name="memory_address"/>
+      <int Value="1" Name="bp_type"/>
+      <int Value="0" Name="watchpoint_type"/>
+      <wxString Value="" Name="watchpt_data"/>
+      <CData Name="commandlist"/>
+      <bool Value="0" Name="regex"/>
+      <bool Value="0" Name="is_temp"/>
+      <bool Value="1" Name="is_enabled"/>
+      <long Value="0" Name="ignore_number"/>
+      <wxString Value="" Name="conditions"/>
+      <int Value="0" Name="origin"/>
+    </SerializedObject>
+  </SerializedObject>
+  <wxString Value="*.c;*.cpp;*.cxx;*.cc;*.h;*.hpp;*.inc;*.mm;*.m;*.xrc;*.xml;*.json;*.sql;*.txt;*.plist;CMakeLists.txt;*.rc;*.iss" Name="m_findInFilesMask"/>
+</Session>

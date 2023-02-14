@@ -1,0 +1,19 @@
+#include "xpn_register_modul.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+G_MODULE_EXPORT struct_register_modul_list *ExpertN_Lib_Register()
+{
+	return register_modul_list_new(1,  // Anzahl der Modelle
+	                               register_modul_new("Hansen et al. (DAISY)",  // Bezeichnung
+	                                       "nitrogen",						                   // Modul
+	                                       "mineralisation",				           // Sub Modul
+	                                       "daisyhong",					           // Klasse
+	                                       "daisyhong_load",						           // load/init Function
+	                                       NULL,						           // global run Function
+	                                       NULL,						           // mosaic run Function
+	                                       "daisyhong_miner",	           // run Funktion
+	                                       "daisyhong_done")                 // done Function	                              
+	                              );
+
+}

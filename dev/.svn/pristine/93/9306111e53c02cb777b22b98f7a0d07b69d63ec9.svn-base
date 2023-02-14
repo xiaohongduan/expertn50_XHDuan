@@ -1,0 +1,11 @@
+#ifndef __DAISYHONG_LOAD_H__
+#define __DAISYHONG_LOAD_H__
+
+#include "daisyhong.h"
+
+
+
+int daisyhong_load_config(daisyhong *self);
+int daisyhong_load_ini(daisyhong *self);
+
+#endif //__DAISYHONG_LOAD_H__

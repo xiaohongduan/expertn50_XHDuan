@@ -1,0 +1,40 @@
+//contains some variables for single trees to make the water balance
+
+class xylemwaterflow_balance
+{
+public:
+	//daily
+	double uptake_d;			// [l] = [mm^3]*1e-6
+	double waterStorage_d;	// [l] = [mm^3]*1e-6
+	double transpiration_d;	// [l] = [mm^3]*1e-6
+	double deltaStorage_d;	// [l] = [mm^3]*1e-6
+	double waterStorage_old_d;// [l] = [mm^3]*1e-6
+	double flow_dbh_d;		// [l] = [mm^3]*1e-6
+	double min_pot_stem;	//Mpa
+	double max_pot_stem;	//Mpa
+	//hourly
+	double uptake_h;			// [l] = [mm^3]*1e-6
+	double waterStorage_h;	// [l] = [mm^3]*1e-6
+	double transpiration_h;	// [l] = [mm^3]*1e-6
+	double deltaStorage_h;	// [l] = [mm^3]*1e-6
+	double waterStorage_old_h;// [l] = [mm^3]*1e-6
+	double flow_dbh_h;		// [l] = [mm^3]*1e-6
+	double sum_d;
+	double sum_h;
+	double pot_stem;		//Mpa
+	xylemwaterflow_balance(){
+	uptake_d=0;
+	waterStorage_d=0;
+	waterStorage_old_d=0;
+	transpiration_d=0;
+	flow_dbh_d=0;
+	uptake_h=0;
+	waterStorage_h=0;
+	waterStorage_old_h=0;
+	transpiration_h=0;
+	flow_dbh_h=0;
+	};
+	void reset_d();
+	void reset_h();
+};
+ 

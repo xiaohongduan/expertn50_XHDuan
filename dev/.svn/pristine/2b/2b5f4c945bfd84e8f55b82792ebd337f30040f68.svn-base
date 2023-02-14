@@ -1,0 +1,9 @@
+#ifndef __DAISYHONG_MINER_H__
+#define __DAISYHONG_MINER_H__
+
+#include "daisyhong.h"
+#include "daisyhong_util.h"
+
+// functions ....
+
+#endif //__DAISYHONG_UTIL_H__

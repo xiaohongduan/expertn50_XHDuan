@@ -1,0 +1,23 @@
+#ifndef CONFIG_H_
+#define CONFIG_H_
+
+struct config 
+{
+	double	delT; 
+	double	delZ;
+	double	dev; 
+	char	*solver;
+	int		pot_tra;
+	int		iterbreak;
+	int		HydraulicLift;
+	char	*RootDistribution; //not used obviously
+	char    *xylemfractionCalculation; //xylem to total stem area calculation: a: aranda 2005, c: constant
+	int		order;
+	double	internal_timestep_ini;
+	int 	beep;
+	double	contemp;
+	int		maxStrahler; //max. Strahler order to get leaves
+};
+
+
+#endif //CONFIG_H_

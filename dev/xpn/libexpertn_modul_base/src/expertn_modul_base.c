@@ -934,7 +934,9 @@ int expertn_modul_base_PlantManagementRead(expertn_modul_base *self,const char* 
 			        (xpn_time_compare_date(stopyear,stopmon,stopday,pSI->Year,pSI->Month,pSI->Day)<0))
 				{
 					S  = g_strdup_printf("Sow date not in simulation period, use startdate as sow date");
-					PRINT_ERROR(S);
+					//Changed Error to Warning by Hong
+					//PRINT_ERROR(S);
+					PRINT_WARNING(self, S);
 					pSI->Year = startyear;
 					pSI->Month =  startmon;
 					pSI->Day =  startday;
@@ -944,7 +946,9 @@ int expertn_modul_base_PlantManagementRead(expertn_modul_base *self,const char* 
 			        (xpn_time_compare_date(stopyear,stopmon,stopday,pPl->pModelParam->HarvestYear,pPl->pModelParam->HarvestMonth,pPl->pModelParam->HarvestDay)<0))
 				{
 					S  = g_strdup_printf("Harvest date not in simulation period, use stop date as harvest date");
-					PRINT_ERROR(S);
+					//Changed Error to Warning by Hong
+					//PRINT_ERROR(S);
+					PRINT_WARNING(self, S);
 					pPl->pModelParam->HarvestYear = stopyear;
 					pPl->pModelParam->HarvestMonth =  stopmon;
 					pPl->pModelParam->HarvestDay =  stopday;
@@ -1174,7 +1178,9 @@ int expertn_modul_base_GenotypeRead(expertn_modul_base *self,PPLANT pPl ,const c
 					char *S;
 					i = 0;
 					S  = g_strdup_printf("Variety \"%s\" not found in %s.ini - phenology: Default values are used.", pGe->acVarietyName,pGe->acCropName);
-					PRINT_ERROR(S);
+					//Changed Error to Warning by Hong
+					//PRINT_ERROR(S);
+					PRINT_WARNING(self, S);
 					g_free(S);
 					break;
 				}
@@ -1369,7 +1375,9 @@ int expertn_modul_base_GenotypeRead(expertn_modul_base *self,PPLANT pPl ,const c
 				{
 					i = 0;
 					S  = g_strdup_printf("Variety \"%s\" not found in %s.ini - ontogenesis: Default values are used.", pGe->acVarietyName,pGe->acCropName);
-					PRINT_ERROR(S);
+					//Changed Error to Warning by Hong
+					//PRINT_ERROR(S);
+					PRINT_WARNING(self, S);
 					g_free(S);
 					break;
 				}
@@ -1497,7 +1505,9 @@ int expertn_modul_base_GenotypeRead(expertn_modul_base *self,PPLANT pPl ,const c
 				{
 					i = 0;
 					S  = g_strdup_printf("Variety \"%s\" not found in %s.ini - storage: Default values are used.", pGe->acVarietyName,pGe->acCropName);
-					PRINT_ERROR(S);
+					//Changed Error to Warning by Hong
+					//PRINT_ERROR(S);
+					PRINT_WARNING(self, S);
 					g_free(S);
 					break;
 				}
@@ -1802,7 +1812,9 @@ int expertn_modul_base_GenotypeRead(expertn_modul_base *self,PPLANT pPl ,const c
 				{
 					i = 0;
 					S  = g_strdup_printf("Variety \"%s\" not found in %s.ini - residue partition: Default values are used.", pGe->acVarietyName,pGe->acCropName);
-					PRINT_ERROR(S);
+					//Changed Error to Warning by Hong
+					//PRINT_ERROR(S);
+					PRINT_WARNING(self, S);
 					g_free(S);
 					break;
 				}

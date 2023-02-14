@@ -382,7 +382,7 @@ return RET_SUCCESS;
 			{ \
 				gchar *S;\
 				S = g_strdup_printf  ("Init var %s.%s (in file %s) is missing. Standard Value (%d) taken instead!\n",groupname,key,filename,std_value);\
-				PRINT_ERROR(S);\
+				PRINT_WARNING(xpn,S);\
 				g_free(S);\
 			}\
 		if (key_exists==FALSE)\
@@ -1034,7 +1034,7 @@ if ((xpn_time_compare_date(xpn->pTi->pSimTime->iyear,xpn->pTi->pSimTime->mon,xpn
 				if ((pCl->pWeather->fWindDirection < 0.0) || (pCl->pWeather->fWindDirection > 360.0))
 					{
 					S = g_strdup_printf("Wind Direction of %f is out of the accepted range from 0° to 360°. Please check 'database.ExpertN Standard Read INI' if Wind Direction is read from the correct column and if your climate file '__climate_hr.csv' is correct. Wind attenuation calculation is stopped now.", pCl->pWeather->fWindDirection);
-					PRINT_ERROR(S);
+					PRINT_WARNING(xpn,S);
 					g_free(S);
 					self->WindAttenuationTrue = 0;
 					}

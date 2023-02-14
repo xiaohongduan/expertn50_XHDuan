@@ -2369,7 +2369,7 @@ void expertn_database_help_func_set_time_step(expertn_modul_base *self,const cha
                         char *ERROR_STR;
 						S = "0.1";
 						ERROR_STR = g_strdup_printf("Varname is not defined (%s or %s), take default value (%s)!\n",local_config_str,"Global_Config.options.time step",S);
-                        PRINT_ERROR_ID(self,ERROR_STR);
+                        PRINT_WARNING_ID(self,ERROR_STR);
 						g_free(ERROR_STR);
                     }
             }

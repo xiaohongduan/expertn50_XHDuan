@@ -168,7 +168,7 @@ int kc_factor_read_dev_file(kc_factor* self, char* filename)
                 i = 0;
                 S = g_strdup_printf(
                     "Variety \"%s\" not found in %s: Default values are used.", pGe->acVarietyName, filename);
-                PRINT_ERROR(S);
+                PRINT_WARNING(xpn,S);//changed Error to Warning by Hong
                 g_free(S);
                 break;
             }

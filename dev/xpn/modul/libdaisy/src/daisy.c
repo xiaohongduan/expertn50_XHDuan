@@ -802,7 +802,9 @@ int Solve_LGS(daisy *self,EXP_POINTER, int Frost_Rad_Flag)
 				
 							}
 		
-			PRINT_ERROR_ID(xpn,"Soil Temperatures new initialized");
+			//changed error to warning by Hong on 20230210
+			//PRINT_ERROR_ID(xpn,"Soil Temperatures new initialized");
+			PRINT_WARNING_ID(xpn,"Soil Temperatures new initialized");
 			self->too_high_or_low_temp=0;
 	}
 

@@ -1260,7 +1260,9 @@ int xpn_register_var_get_pointer_convert_to_int(xpn_register_var *self,char *var
 	S = (char*)xpn_register_var_get_pointer(self,varname);
 	if (S==NULL)
 		{
-			fprintf(stderr,"ERROR: Varname is not defined (%s), take default value (%d)!\n",varname,standartvalue);
+			//changed error to warning by Hong on 20230210
+			//fprintf(stderr,"ERROR: Varname is not defined (%s), take default value (%d)!\n",varname,standartvalue);
+			fprintf(stderr,"WARNING: Varname is not defined (%s), take default value (%d)!\n",varname,standartvalue);
 			return  standartvalue;
 		}
 	else
@@ -1276,7 +1278,9 @@ double xpn_register_var_get_pointer_convert_to_double(xpn_register_var *self,cha
 	S = (char*)xpn_register_var_get_pointer(self,varname);
 	if (S==NULL)
 		{
-			fprintf(stderr,"ERROR: Varname is not defined (%s), take default value (%f)!\n",varname,standartvalue);
+			//changed error to warning by Hong on 20230210
+			//fprintf(stderr,"ERROR: Varname is not defined (%s), take default value (%f)!\n",varname,standartvalue);
+			fprintf(stderr,"WARNING: Varname is not defined (%s), take default value (%f)!\n",varname,standartvalue);
 			return  standartvalue;
 		}
 	else
@@ -1292,7 +1296,9 @@ float xpn_register_var_get_pointer_convert_to_float(xpn_register_var *self,char 
 	S = (char*)xpn_register_var_get_pointer(self,varname);
 	if (S==NULL)
 		{
-			fprintf(stderr,"ERROR: Varname is not defined (%s), take default value (%f)!\n",varname,(double)standartvalue);
+			//changed error to warning by Hong on 20230210
+			//fprintf(stderr,"ERROR: Varname is not defined (%s), take default value (%f)!\n",varname,(double)standartvalue);
+			fprintf(stderr,"WARNING: Varname is not defined (%s), take default value (%f)!\n",varname,(double)standartvalue);
 			return  standartvalue;
 		}
 	else
@@ -1310,7 +1316,9 @@ char** xpn_register_var_get_pointer_convert_to_array_string(xpn_register_var *se
 	S = (char*)xpn_register_var_get_pointer(self,varname);
 	if (S==NULL)
 		{
-			fprintf(stderr,"ERROR: Varname is not defined (%s)!\n",varname);
+			//changed error to warning by Hong on 20230210
+			//fprintf(stderr,"ERROR: Varname is not defined (%s)!\n",varname);
+			fprintf(stderr,"WARNING: Varname is not defined (%s)!\n",varname);
 			*size = 0;
 			return  NULL;
 		}

@@ -1,6 +1,6 @@
-# project  configured on Thu Jul 29 06:44:42 2021 by
+# project  configured on Mon Feb 13 16:47:20 2023 by
 # waf 1.7.9 (abi 98, python 20703f0 on win32)
-# using waf configure --check-cxx-compiler=g++ --check-c-compiler=gcc --debug --prefix=D:\expertn50\built codelite
+# using waf configure
 #
 ----------------------------------------
 Setting top to
@@ -9,19 +9,27 @@ D:\expertn50\dev
 Setting out to
 D:\expertn50\dev\build
 ----------------------------------------
+Checking for 'msvc' (c++ compiler)
+from D:\expertn50\dev: msvc: Impossible to find a valid architecture for building (in setup_msvc)
+not found
+----------------------------------------
 Checking for 'g++' (c++ compiler)
-find program=['g++', 'c++'] paths=['C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath', 'C:\\WINDOWS\\system32', 'C:\\WINDOWS', 'C:\\WINDOWS\\System32\\Wbem', 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\WINDOWS\\System32\\OpenSSH\\', 'C:\\Program Files\\Git\\cmd', 'D:\\MinGW\\bin', 'D:\\Gtk+\\bin', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps', 'C:\\Program Files\\Multipass\\bin', 'D:\\expertn50\\expertn_tools', 'D:\\expertn50\\built\\bin', 'D:\\Python27', 'D:\\MinGW\\msys\\1.0\\bin', 'D:\\Python27\\Lib\\site-packages\\pywin32_system32', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe', 'C:\\User\\Dong\\anaconda3', ''] var='CXX' -> 'D:\\MinGW\\bin\\g++.exe'
-find program=['ar'] paths=['C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath', 'C:\\WINDOWS\\system32', 'C:\\WINDOWS', 'C:\\WINDOWS\\System32\\Wbem', 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\WINDOWS\\System32\\OpenSSH\\', 'C:\\Program Files\\Git\\cmd', 'D:\\MinGW\\bin', 'D:\\Gtk+\\bin', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps', 'C:\\Program Files\\Multipass\\bin', 'D:\\expertn50\\expertn_tools', 'D:\\expertn50\\built\\bin', 'D:\\Python27', 'D:\\MinGW\\msys\\1.0\\bin', 'D:\\Python27\\Lib\\site-packages\\pywin32_system32', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe', 'C:\\User\\Dong\\anaconda3', ''] var='AR' -> 'D:\\MinGW\\bin\\ar.exe'
+find program=['g++', 'c++'] paths=['C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath', 'C:\\WINDOWS\\system32', 'C:\\WINDOWS', 'C:\\WINDOWS\\System32\\Wbem', 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\WINDOWS\\System32\\OpenSSH\\', 'C:\\Program Files\\Git\\cmd', 'D:\\MinGW\\bin', 'D:\\Gtk+\\bin', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps', 'C:\\Program Files\\Multipass\\bin', 'D:\\expertn50\\expertn_tools', 'D:\\expertn50\\built\\bin', 'D:\\Python27', 'D:\\MinGW\\msys\\1.0\\bin', 'D:\\Python27\\Lib\\site-packages\\pywin32_system32', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe', 'C:\\User\\Dong\\anaconda3', '', 'C:\\Users\\Dong\\AppData\\Local\\Programs\\Microsoft VS Code\\bin'] var='CXX' -> 'D:\\MinGW\\bin\\g++.exe'
+find program=['ar'] paths=['C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath', 'C:\\WINDOWS\\system32', 'C:\\WINDOWS', 'C:\\WINDOWS\\System32\\Wbem', 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\WINDOWS\\System32\\OpenSSH\\', 'C:\\Program Files\\Git\\cmd', 'D:\\MinGW\\bin', 'D:\\Gtk+\\bin', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps', 'C:\\Program Files\\Multipass\\bin', 'D:\\expertn50\\expertn_tools', 'D:\\expertn50\\built\\bin', 'D:\\Python27', 'D:\\MinGW\\msys\\1.0\\bin', 'D:\\Python27\\Lib\\site-packages\\pywin32_system32', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe', 'C:\\User\\Dong\\anaconda3', '', 'C:\\Users\\Dong\\AppData\\Local\\Programs\\Microsoft VS Code\\bin'] var='AR' -> 'D:\\MinGW\\bin\\ar.exe'
 D:\MinGW\bin\g++.exe
 ----------------------------------------
+Checking for 'msvc' (c compiler)
+(tool msvc is already loaded, skipping)
+not found
+----------------------------------------
 Checking for 'gcc' (c compiler)
-find program=['gcc', 'cc'] paths=['C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath', 'C:\\WINDOWS\\system32', 'C:\\WINDOWS', 'C:\\WINDOWS\\System32\\Wbem', 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\WINDOWS\\System32\\OpenSSH\\', 'C:\\Program Files\\Git\\cmd', 'D:\\MinGW\\bin', 'D:\\Gtk+\\bin', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps', 'C:\\Program Files\\Multipass\\bin', 'D:\\expertn50\\expertn_tools', 'D:\\expertn50\\built\\bin', 'D:\\Python27', 'D:\\MinGW\\msys\\1.0\\bin', 'D:\\Python27\\Lib\\site-packages\\pywin32_system32', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe', 'C:\\User\\Dong\\anaconda3', ''] var='CC' -> 'D:\\MinGW\\bin\\gcc.exe'
+find program=['gcc', 'cc'] paths=['C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath', 'C:\\WINDOWS\\system32', 'C:\\WINDOWS', 'C:\\WINDOWS\\System32\\Wbem', 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\WINDOWS\\System32\\OpenSSH\\', 'C:\\Program Files\\Git\\cmd', 'D:\\MinGW\\bin', 'D:\\Gtk+\\bin', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps', 'C:\\Program Files\\Multipass\\bin', 'D:\\expertn50\\expertn_tools', 'D:\\expertn50\\built\\bin', 'D:\\Python27', 'D:\\MinGW\\msys\\1.0\\bin', 'D:\\Python27\\Lib\\site-packages\\pywin32_system32', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe', 'C:\\User\\Dong\\anaconda3', '', 'C:\\Users\\Dong\\AppData\\Local\\Programs\\Microsoft VS Code\\bin'] var='CC' -> 'D:\\MinGW\\bin\\gcc.exe'
 (tool ar is already loaded, skipping)
 D:\MinGW\bin\gcc.exe
 ----------------------------------------
 Checking for program pkg-config
 D:\MinGW\bin\pkg-config.exe
-find program=['pkg-config'] paths=['C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath', 'C:\\WINDOWS\\system32', 'C:\\WINDOWS', 'C:\\WINDOWS\\System32\\Wbem', 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\WINDOWS\\System32\\OpenSSH\\', 'C:\\Program Files\\Git\\cmd', 'D:\\MinGW\\bin', 'D:\\Gtk+\\bin', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps', 'C:\\Program Files\\Multipass\\bin', 'D:\\expertn50\\expertn_tools', 'D:\\expertn50\\built\\bin', 'D:\\Python27', 'D:\\MinGW\\msys\\1.0\\bin', 'D:\\Python27\\Lib\\site-packages\\pywin32_system32', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe', 'C:\\User\\Dong\\anaconda3', ''] var='PKGCONFIG' -> 'D:\\MinGW\\bin\\pkg-config.exe'
+find program=['pkg-config'] paths=['C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath', 'C:\\WINDOWS\\system32', 'C:\\WINDOWS', 'C:\\WINDOWS\\System32\\Wbem', 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\', 'C:\\WINDOWS\\System32\\OpenSSH\\', 'C:\\Program Files\\Git\\cmd', 'D:\\MinGW\\bin', 'D:\\Gtk+\\bin', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps', 'C:\\Program Files\\Multipass\\bin', 'D:\\expertn50\\expertn_tools', 'D:\\expertn50\\built\\bin', 'D:\\Python27', 'D:\\MinGW\\msys\\1.0\\bin', 'D:\\Python27\\Lib\\site-packages\\pywin32_system32', 'C:\\Users\\Dong\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe', 'C:\\User\\Dong\\anaconda3', '', 'C:\\Users\\Dong\\AppData\\Local\\Programs\\Microsoft VS Code\\bin'] var='PKGCONFIG' -> 'D:\\MinGW\\bin\\pkg-config.exe'
 ----------------------------------------
 Checking for 'glib-2.0' >= 2.22.5
 ['D:\\MinGW\\bin\\pkg-config.exe', '--atleast-version=2.22.5', 'glib-2.0']
@@ -86,7 +94,7 @@ Checking Expert-N Version
 5.0 Rev 0
 ----------------------------------------
 Flag debug:
-True
+False
 ----------------------------------------
 Flag max_optimize
 False
@@ -104,7 +112,7 @@ out: -ID:/MinGW/include  -LD:/MinGW/lib -lnetcdf
 yes
 ----------------------------------------
 Installation Prefix
-D:\expertn50\built
+C:\Users\Dong/expertn50/built
 ----------------------------------------
 Flag GUI
 False

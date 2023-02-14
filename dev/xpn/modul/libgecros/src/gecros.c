@@ -991,7 +991,7 @@ int gecros_load_ini_file(gecros *self)
 				{
 					i = 0;
 					S  = g_strdup_printf("Variety \"%s\" not found in %s.ini - residue partition: Default values are used.", pGe->acVarietyName,pGe->acCropName);
-					PRINT_ERROR(S);
+					PRINT_WARNING(xpn, S);//Changed Error to Warning by Hong
 					g_free(S);
 					break;
 				}
